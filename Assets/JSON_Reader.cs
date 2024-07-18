@@ -27,10 +27,11 @@ public class Transform
 
 public class JSON_Reader : MonoBehaviour
 {
+    public GameObject cude;
     // Start is called before the first frame update
     void Start()
     {
-        //入力データパス名「Assets/Resource/put.json」
+        //入力データパス名「Assets/Resources/out.json」
         string json_string = Resources.Load<TextAsset>("out").ToString();
         JsonScene jsonScene = new JsonScene();
 
@@ -55,7 +56,10 @@ public class JSON_Reader : MonoBehaviour
             Debug.Log($" translation : {position}");
             Debug.Log($" rotation    : {rotation}");
             Debug.Log($"scaling      : {scaling}");
+
+            Instantiate(cude, position, Quaternion.identity);
         }
+     
     }
 
     // Update is called once per frame
