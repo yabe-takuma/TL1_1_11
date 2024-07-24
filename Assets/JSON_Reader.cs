@@ -27,7 +27,12 @@ public class Transform
 
 public class JSON_Reader : MonoBehaviour
 {
-    public GameObject cude;
+    //試しにJsonデータでCudeを配置してみる
+    public GameObject sord;
+    public GameObject spear;
+    public GameObject ax;
+  
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +42,8 @@ public class JSON_Reader : MonoBehaviour
 
         JsonUtility.FromJsonOverwrite(json_string, jsonScene);
         Debug.Log(jsonScene.name);
+
+        Screen.SetResolution(1920, 1080,false);
 
         foreach(Object one in jsonScene.objects)
         {
@@ -57,9 +64,22 @@ public class JSON_Reader : MonoBehaviour
             Debug.Log($" rotation    : {rotation}");
             Debug.Log($"scaling      : {scaling}");
 
-            Instantiate(cude, position, Quaternion.identity);
+            //試しにJsonデータでCudeを配置してみる
+            if (one.name == "Cube"||one.name =="Cube.003")
+            {
+                Instantiate(sord, position, Quaternion.identity);
+            }
+            else if (one.name == "Cube.001" || one.name == "Cube.004")
+            {
+                Instantiate(spear, position, Quaternion.identity);
+            }
+            else if (one.name == "Cube.002" || one.name == "Cube.005")
+            {
+                Instantiate(ax, position, Quaternion.identity);
+            }
+          
         }
-     
+       
     }
 
     // Update is called once per frame
